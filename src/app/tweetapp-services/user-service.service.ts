@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ForgotPassword } from '../tweetapp-models/forgot-password';
@@ -12,7 +12,7 @@ import { UsersAll } from '../tweetapp-models/users-all';
 })
 export class UserServiceService {
 
-  baseUrl: string = "http://tweetapp-env-1.eba-abudzswx.ap-south-1.elasticbeanstalk.com/"+"api/v1.0/tweets";
+  baseUrl: string = "http://tweetapp-env-1.eba-abudzswx.ap-south-1.elasticbeanstalk.com/" + "api/v1.0/tweets";
 
   constructor(private http: HttpClient) {
 
@@ -61,5 +61,11 @@ export class UserServiceService {
 
   public errorHandler(error: HttpErrorResponse) {
     return throwError(error || "server error");
+  }
+
+  public loggingOut() {
+    localStorage.clear();
+    return false;
+
   }
 }

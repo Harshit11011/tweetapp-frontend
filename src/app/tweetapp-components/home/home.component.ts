@@ -38,7 +38,8 @@ export class HomeComponent implements OnInit {
     this.tweetService.getAllTweets().subscribe((tweet) => this.homeTweets = tweet);
     this.isCollapse = false;
     this.isLiked = -1;
-
+    this.userReplyId=-1;
+    
   }
 
   convert(stringDate: any) {
@@ -92,6 +93,7 @@ export class HomeComponent implements OnInit {
       });
     }
     this.isCollapse = true;
+    this.userReplyId=-1;
   }
 
   likeTweet(tweetId: number) {
@@ -147,7 +149,6 @@ export class HomeComponent implements OnInit {
         let response = this.tweetService.replyTweet(this.loggedUser, tweetId, this.postTweet);
         response.subscribe((data) => {
           this.ngOnInit();
-          this.userReplyId = -1;
           this.userReply = "";
           this.userTag = "";
           this.toastr.success("you have replied to tweet successfully.");
@@ -179,7 +180,7 @@ export class HomeComponent implements OnInit {
       if (this.loggedUser != null) {
         let response = this.tweetService.updateTweet(this.loggedUser, tweetId, this.postTweet);
         response.subscribe((data) => {
-          this.ngOnInit();
+          this.filterUsersTweets();
           this.userReplyId = -1;
           this.userReply = "";
           this.userTag = "";

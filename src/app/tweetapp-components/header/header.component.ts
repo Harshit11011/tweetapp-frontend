@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { UserServiceService } from 'src/app/tweetapp-services/user-service.service';
 
 @Component({
   selector: 'app-header',
@@ -10,24 +11,19 @@ import { ToastrService } from 'ngx-toastr';
 export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean = false;
-  loggedUserIndicator: any;
 
-  constructor(private toastr: ToastrService, private route: Router) { 
-    var user = localStorage.getItem('user');
-    if (user != null) {
-      this.isLoggedIn = true;
-    }
+  constructor(private toastr: ToastrService, private route: Router, private service:UserServiceService) { 
+    this.isLoggedIn=this.service.isUserLoggedIn();
   }
 
   ngOnInit(): void {
-   
   }
 
   logout() {
-    localStorage.clear();
+    this.isLoggedIn = this.service.loggingOut();
     this.route.navigateByUrl('/');
     this.toastr.success('You have successfull logged out');
-    this.isLoggedIn = false;
+    
     
   }
 

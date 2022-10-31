@@ -11,9 +11,13 @@
                     <span class="tweetapp-text">TweetApp</span>
                 </a>
             </div>
-            <div class="d-flex flex-row-reverse">
-                <a routerLink="/sign-up" type="button" class="btn btn-primary">Sign Up</a>
-                <a routerLink="/login" type="button" class="btn btn-outline-info">Login</a>
+            <div *ngIf="!isLoggedIn" class="float-right">
+                <a routerLink="/sign-up" type="button" class="btn btn-primary mr-2">Sign Up</a>
+                <a routerLink="/login" type="button" class="btn btn-outline-info mr-2">Login</a>
+            </div>
+
+            <div *ngIf="isLoggedIn" class="float-right">
+                <a routerLink="/login" (click)="logout()" type="button" class="btn btn-outline-info mr-2">Log Out</a>
             </div>
 
         </div>

@@ -46,6 +46,11 @@ export class SidebarComponent implements OnInit {
   public addTweet(userName:string,postTweet: PostTweet) {
     let response = this.service.postTweets(userName,postTweet);
     response.subscribe((data) => {
+      this.route.navigateByUrl('/body');
+      this.tweetForm=this.formBuilder.group({
+        tweetTag: [''],
+        tweetMessage: [''],
+      });
       this.toastr.success('Tweet Added Successfully.');
     }, (error) => {
       console.log(error.error);
