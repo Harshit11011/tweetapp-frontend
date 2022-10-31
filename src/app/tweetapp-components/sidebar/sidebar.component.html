@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="card">
+            <img src="https://picsum.photos/id/1035/200/100" class="card-img-top" alt="...">
+            <div class="card-body">
+                <div class="container">
+                    <span class="user">Welcome!!   </span>
+                     <span class="user">{{userName}}</span>
+                    
+                </div>
+                <span class="card-title">
+                    Something on your mind ?
+                    Please tell us with a tweet.
+                </span>
+                <div class="container mt-3">
+                    <form [formGroup]="tweetForm" (ngSubmit)="postTheTweet()">
+                        <div class="form-group row mb-3">
+                            <label for="exampletweetMessage" class="col-md-4 col-form-label">Tweet
+                                Message</label>
+                            <div class="col">
+                                <textarea rows="4" [class.is-invalid]="tweetForm.get('tweetMessage')?.invalid 
+                                && tweetForm.get('tweetMessage')?.touched" formControlName="tweetMessage"
+                                    class="form-control" id="exampletweetMessage" required></textarea>
+                                <div *ngIf="tweetForm.get('tweetMessage')?.invalid 
+                                    && tweetForm.get('tweetMessage')?.touched">
+                                    <small *ngIf="tweetForm.get('tweetMessage')?.errors?.required"
+                                        class="text-danger">Tweet
+                                        message is required field</small>
+                                    <small *ngIf="tweetForm.get('tweetMessage')?.errors?.maxlength" class="text-danger">
+                                        Tweet should not be more than 144 characters</small>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <label for="exampletweetTag" class="col-md-4 col-form-label">tweetTag
+                            </label>
+                            <div class="col">
+                                <input type="tweetTag" [class.is-invalid]="tweetForm.get('tweetTag')?.invalid 
+                                && tweetForm.get('tweetTag')?.touched" formControlName="tweetTag" class="form-control"
+                                    id="exampletweetTag" required>
+                                <div *ngIf="tweetForm.get('tweetTag')?.invalid 
+                                    && tweetForm.get('tweetTag')?.touched">
+                                    <small *ngIf="tweetForm.get('tweetTag')?.errors?.required" class="text-danger">
+                                        tweetTag is required field</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3 justify-content-center">
+                            <span class="col-md-6 col-md-offset-4">
+                                <button type="submit" [disabled]="!tweetForm.valid" class="btn btn-primary">Post
+                                    Tweet</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <app-footer></app-footer>
+</div>

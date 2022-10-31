@@ -1,0 +1,118 @@
+.container-fluid{
+    margin-top: 4.2rem;
+    width: 50%;
+    float: right;
+    margin-right: 21%;
+}
+
+.avtar{
+    width: 8%;
+    display: inline-block;
+}
+
+.searchAvtar{
+    width: 10%;
+    display: inline-block;
+}
+
+.userName{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.postedDate{
+    margin-left:45%;
+    font-style: italic;
+}
+
+.tweetTag{
+    margin-left:10%;
+}
+
+.search{
+    min-height:3rem;
+    height: fit-content;
+}
+.searchBar{
+    border-radius: 0.8rem;
+    width: 70%;
+    margin-right:0.5rem;
+}
+
+.bi{
+height: 1.5rem;
+width: 1.5rem;
+}
+
+.search-failed{
+    color:red;
+}
+
+.btn-secondary{
+    margin-left:80%;
+    margin-bottom:.3rem;
+    font-weight:700;
+
+}
+.users h5{
+    background-color:lightgoldenrodyellow;
+    text-align:center;
+}
+.details{
+    font-size:1rem;
+}
+
+.btn-outline-dark{
+    font-weight:700;
+    margin-bottom:0.2rem;
+    margin-left:8%;
+}
+
+.tweetMessage{
+    margin-left:8%;
+}
+
+.likes,.comments,.delete,.update{
+    width: 25%;
+    display:inline-block;
+}
+
+.user-replied{
+    font-size:1rem;
+}
+
+.userComments{
+    width: 102%;
+}
+
+.userReplyDesign{
+    border: 1px solid black;
+    padding: 0.5rem;
+    border-radius:1rem;
+}
+
+.messageLabel{
+    width:20%;
+}
+.messageInput{
+    width:76%;
+}
+.messageInput1{
+    width:38%;
+}
+.userCommentButton{
+    width: 20%;
+    margin-left: 18%;
+}
+.userRepliedName{
+    font-weight:500;
+}
+.replies{
+    margin-left:2%;
+}
+.replyTime{
+    font-style:italic;
+    float:right;
+}
+.repliedTweetMessage{
+    margin-left:8%;
+}

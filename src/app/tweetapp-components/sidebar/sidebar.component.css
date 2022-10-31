@@ -1,0 +1,20 @@
+.container-fluid{
+    width:30%;
+    margin-top: 4.2rem;
+    position:fixed;
+    float:left;
+}
+
+.card-title{
+    font-style:italic;
+}
+
+.user{
+    font-weight:700;
+    font-size:1.5rem;
+    margin-left:8%;
+    font-style:italic;
+}
+
+
+

@@ -1,0 +1,138 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-md-offset-4">
+            <div class="card">
+                <div class="card-header">
+                    User registration
+                </div>
+                <div class="card-body">
+
+                    <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+                        <div class="form-group row mb-3">
+                            <label for="exampleFirstName" class="col-md-4 col-form-label">First Name</label>
+                            <div class="col-md-6">
+                                <input type="text" [class.is-invalid]="signUpForm.get('firstName')?.invalid 
+                                && signUpForm.get('firstName')?.touched" formControlName="firstName"
+                                    placeholder="e.g John" class="form-control" id="exampleFirstName" required
+                                    autofocus>
+                                <div *ngIf="signUpForm.get('firstName')?.invalid 
+                                    && signUpForm.get('firstName')?.touched">
+                                    <small *ngIf="signUpForm.get('firstName')?.errors?.required"
+                                        class="text-danger">First Name is required field</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <label for="exampleLastName" class="col-md-4 col-form-label">Last
+                                name</label>
+                            <div class="col-md-6">
+                                <input [class.is-invalid]="signUpForm.get('lastName')?.invalid 
+                                && signUpForm.get('lastName')?.touched" type="text" formControlName="lastName"
+                                    placeholder="e.g Smith" class="form-control" id="exampleLastName" required
+                                    autofocus>
+                                <div *ngIf="signUpForm.get('lastName')?.invalid 
+                                    && signUpForm.get('lastName')?.touched">
+                                    <small *ngIf="signUpForm.get('lastName')?.errors?.required" class="text-danger">Last
+                                        Name is required field</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                            <label for="exampleInputEmail" class="col-md-4 col-form-label">Email
+                                address</label>
+                            <div class="col-md-6">
+                                <input [class.is-invalid]="signUpForm.get('emailAddress')?.invalid 
+                                && signUpForm.get('emailAddress')?.touched" formControlName="emailAddress" type="email"
+                                    placeholder="ironman@yahoo.com" class="form-control" id="exampleInputEmail" required
+                                    autofocus>
+                                <div *ngIf="signUpForm.get('emailAddress')?.invalid 
+                                    && signUpForm.get('emailAddress')?.touched">
+                                    <small *ngIf="signUpForm.get('emailAddress')?.errors?.required"
+                                        class="text-danger">Email
+                                        Address is required field</small>
+                                    <small *ngIf="signUpForm.get('emailAddress')?.errors?.email"
+                                        class="text-danger">please
+                                        provide a valid mail</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <label for="exampleContactNumber" class="col-md-4 col-form-label">Contact Number
+                            </label>
+                            <div class="col-md-6">
+                                <input type="text" [class.is-invalid]="signUpForm.get('contactNumber')?.invalid 
+                                && signUpForm.get('contactNumber')?.touched" formControlName="contactNumber"
+                                    placeholder="123-456-7890" class="form-control" id="exampleContactNumber" required
+                                    autofocus>
+                                <div *ngIf="signUpForm.get('contactNumber')?.invalid 
+                                    && signUpForm.get('contactNumber')?.touched">
+                                    <small *ngIf="signUpForm.get('contactNumber')?.errors?.required"
+                                        class="text-danger">Contact
+                                        Number is required field</small>
+                                    <small *ngIf="signUpForm.get('contactNumber')?.errors?.pattern"
+                                        class="text-danger">please
+                                        provide a valid 10 digit mobile number</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <label for="exampleUserName" class="col-md-4 col-form-label">User
+                                Name</label>
+                            <div class="col-md-6">
+                                <input type="text" [class.is-invalid]="signUpForm.get('userName')?.invalid 
+                                && signUpForm.get('userName')?.touched" formControlName="userName"
+                                    placeholder="e.g SpongeBob" class="form-control" id="exampleUserName" required
+                                    autofocus>
+                                <div *ngIf="signUpForm.get('userName')?.invalid 
+                                    && signUpForm.get('userName')?.touched">
+                                    <small *ngIf="signUpForm.get('userName')?.errors?.required" class="text-danger">User
+                                        Name is required field</small>
+                                        <small *ngIf="signUpForm.get('userName')?.errors?.userExists" class="text-danger">User
+                                            Name is already taken, please use another user name</small>                       
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <label for="examplepassword" class="col-md-4 col-form-label">Password
+                            </label>
+                            <div class="col-md-6">
+                                <input type="password" [class.is-invalid]="signUpForm.get('password')?.invalid 
+                                && signUpForm.get('password')?.touched" formControlName="password" class="form-control"
+                                    id="examplepassword" required autofocus>
+                                <div *ngIf="signUpForm.get('password')?.invalid 
+                                    && signUpForm.get('password')?.touched">
+                                    <small *ngIf="signUpForm.get('password')?.errors?.required" class="text-danger">
+                                        Password is required field</small>
+                                    <small *ngIf="signUpForm.get('password')?.errors?.minlength" class="text-danger">
+                                        Password must have at least 8 characters </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <label for="exampleConfirmPassword" class="col-md-4 col-form-label">Confirm Password
+                            </label>
+                            <div class="col-md-6">
+                                <input type="password" [class.is-invalid]="signUpForm.errors?.mismatch"
+                                    formControlName="confirmPassword" class="form-control" id="exampleConfirmPassword"
+                                    required autofocus>
+                                <div *ngIf="signUpForm.errors?.mismatch">
+                                    <small *ngIf="signUpForm.errors?.mismatch" class="text-danger">
+                                        Confirm password must be same as password </small>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row mb-3 justify-content-center">
+                            <span class="col-md-6">
+                                <button [disabled]="!signUpForm.valid" type="submit"
+                                    class="btn btn-primary">Register</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
